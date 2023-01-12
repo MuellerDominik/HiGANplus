@@ -42,20 +42,18 @@ for folder in os.listdir(input_dir_name):
         cv2.destroyAllWindows()  # Close the window
 
         # Find the contours of the handwriting
-        contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
-        # Find the bounding box of the handwriting
-        x, y, w, h = cv2.boundingRect(contours[0])
-        cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        # 1.Try Contours: contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        x, y, w, h = cv2.boundingRect(binary)
+        cv2.rectangle(binary, (x, y), (x + w, y + h), (255, 0, 0), 2)
         print("drawing box on image")
-        cv2.imshow("image", image)  # Display the image
+        cv2.imshow("binary with box", binary)  # Display the image
         cv2.waitKey(0)  # Wait for a key press
         cv2.destroyAllWindows()  # Close the window
 
         # Crop the image to the bounding box
         handwriting = gray[y:y + h, x:x + w]
         print("Show image after cropping:")
-        cv2.imshow("handwriting", handwriting)  # Display the image
+        cv2.imshow("gray image cropped", handwriting)  # Display the image
         cv2.waitKey(0)  # Wait for a key press
         cv2.destroyAllWindows()  # Close the window
 
