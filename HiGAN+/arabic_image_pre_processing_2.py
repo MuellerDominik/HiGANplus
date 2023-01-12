@@ -58,22 +58,38 @@ for folder in os.listdir(input_dir_name):
         cv2.destroyAllWindows()  # Close the window
 
         # Or cut away the white pixels if shape not the same
+        print("handwriting.shape before padding", handwriting.shape)
         target_shape = (64, img_width)
-        if handwriting.shape[1] < target_shape[1]:
-            print("handwriting.shape[1] < target_shape[1]")
-        if handwriting.shape[1] != target_shape[1]:
-            handwriting = handwriting[:, :target_shape[1]]
+        height, width = handwriting.shape[:2]
+        if height < 64:
+            pass
+        if width < img_width:
+            pass
+
+        if (height != 64 or width != img_width) or (height != 64 and width != img_width):
+            print("cv2.border_replicate")
+            top, bottom, left, right = abs((64 - height) // 2), \
+                                       abs((64 - height) // 2), \
+                                       abs((img_width - width)) // 2, \
+                                       abs((img_width - width) // 2)
+            print("Amount of padding", top, bottom, left, right)
+            color = cv2.GC_BGD
+            padded = cv2.copyMakeBorder(handwriting, top, bottom, left, right, borderType=cv2.BORDER_REPLICATE)
+
+        else:
+            padded = handwriting
+        print("handwriting.shape after padding", handwriting.shape)
 
         # Scale the image
-        handwriting = cv2.resize(handwriting, target_shape, interpolation=cv2.INTER_AREA)
-        print("Show after scaling")
-        cv2.imshow("Handwriting", handwriting)  # Display the image
+        # 1.Try: handwriting = cv2.resize(handwriting, target_shape, interpolation=cv2.INTER_AREA)
+        print("Show after padding")
+        cv2.imshow("Shape adjusted handwriting", handwriting)  # Display the image
         cv2.waitKey(0)  # Wait for a key press
         cv2.destroyAllWindows()  # Close the window
 
         # padding the image if width not enough long
-        if handwriting.shape[1] < target_shape[1]:
-            padding_width = (0, target_shape[1] - handwriting.shape[1])
-            handwriting = np.pad(handwriting, padding_width, mode='constant', constant_values=255)
+        # if handwriting.shape[1] < target_shape[1]:
+        #     padding_width = (0, target_shape[1] - handwriting.shape[1])
+        #     handwriting = np.pad(handwriting, padding_width, mode='constant', constant_values=255)
 
         print("------next_image-------")
