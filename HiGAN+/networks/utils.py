@@ -201,7 +201,7 @@ def idx_to_words(idx, lexicon, max_word_len=0, capitize_ratio=0.5, blank_ratio=0
 
 def pil_text_img(im, text, pos, color=(255, 0, 0), textSize=25):
     img_PIL = Image.fromarray(cv2.cvtColor(im, cv2.COLOR_BGR2RGB))
-    font = ImageFont.truetype('font/arial.ttf', textSize)
+    font = ImageFont.truetype('HiGANplus/HiGAN+/font/arial.ttf', textSize)
     fillColor = color  # (255,0,0)
     position = pos  # (100,100)
     draw = ImageDraw.Draw(img_PIL)

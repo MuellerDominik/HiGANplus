@@ -2,7 +2,7 @@ ImgHeight = 64
 CharWidth = ImgHeight // 2
 
 data_roots = {
-    'iam': './data/iam/'
+    'iam': './HiGANplus/HiGAN+/data/iam/'
 }
 
 data_paths = {
