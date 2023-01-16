@@ -1,29 +1,34 @@
 
-# Handwritten Text Generation using cGAN: Sub-experiment 'Arabic Handwriting Generation'
+# Handwritten Text Generation using cGAN: 
+
+## Sub-experiment 'Arabic Handwriting Generation'
 
 This experiment aims to answer whether the HiGAN+ can be generalized to the Arabic language.
 
-## Requirements
+### Requirements
 
 Install the packages listed in the requirement.txt file.
 
-## Recreation of results
+### Recreation of results
 
-To run the model, first the arabic handwriting dataset AHAWP needs to be downloaded. In the dataset the sub-folder
-'isolated_words_per_user'. The folder needs to be put into the sub-folder 'data' and split to 
-'arabic_isolated_words_per_user_train' and 'arabic_isolated_words_per_user_test'. In our case we use 18 users 
-in the test set and the rest of the users in the train set. 
+To begin, download the Arabic Handwriting dataset (AHAWP) and locate the sub-folder 'isolated_words_per_user'. Move 
+this folder to the 'data' sub-folder and divide it into two: 'arabic_isolated_words_per_user_train' and 
+'arabic_isolated_words_per_user_test'. In this case, 18 users will be in the test set and the remaining users will be 
+in the train set.
 
-Afterwards the python file named 'arabic_image_pre_processing' needs to be run. This file does get the labels,
-the writer ID, crops the image according to the original IAM datset and inverts it. At the end
-the 'arabic_hdf5_dataset_generation.py' is executed which generates the needed .hdf5 files to run the model. 
+Next, run the python file 'arabic_image_pre_processing.py'. This file will gather the labels, writer ID, crop the image 
+according to the IAM dataset, and invert it. Then, execute 'arabic_hdf5_dataset_generation.py' to generate the 
+necessary .hdf5 files for the model.
 
-In order to run the code without adjusting the source code otherwise, the generated test and train sets need to be 
-renamed to 'trnvalset_words64_OrgSz.hdf5' and 'testset_words64_OrgSz.hdf5' respectively. 
+To run the code without making any adjustments, rename the generated test and train sets to 
+'trnvalset_words64_OrgSz.hdf5' and 'testset_words64_OrgSz.hdf5' respectively, and save them in the 'iam' sub-folder. 
 
-Furthermore a txt file named 'arabic_test_words.txt' is generated when running 
+Additionally, a file called 'arabic_test_words.txt' will be created when running the test set. This file contains the 
+words that the model will be tested on. Rename it to 'english_words.txt' and save it in the 'data' folder.
 
-The 'reading_hdf5_files.py' was used to reverse engineer the dataset structure of the source code and for debugging
-purposes only. 
+The file 'reading_hdf5_files.py' was used to reverse-engineer the dataset structure and for debugging purposes only. 
+Once all the above steps are completed, the model can be executed. 
 
-The 'README_of_HiGAN+_Source_Code.md' file is the mardown README file of the source code. 
+The 'run.sh' file can be used to run it on the Euler cluster. 
+
+Lastly, the 'README_of_HiGAN+_Source_Code.md' file is the markdown README file for the source code. 

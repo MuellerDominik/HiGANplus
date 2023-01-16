@@ -5,7 +5,7 @@ from os import path
 from PIL import Image
 from arabic_hdf5_dataset_generation import gen_h5file
 
-# Choose whether the train or test set needs to be generated:
+# Choose whether the train or test set should be generated:
 is_test = True
 # is_test = False
 
@@ -21,7 +21,7 @@ all_imgs = []
 words_list = []
 
 for folder in os.listdir(input_dir_name):
-    print(folder)
+    # print(folder)
     input_dir = os.path.join(input_dir_name, folder)
     assert path.exists(input_dir)
 
