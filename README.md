@@ -54,7 +54,7 @@ This experiment aims to answer, whether the HiGAN+ model is able to generalize t
 
 #### Installation
 
-To train on the [AHAWP dataset](https://data.mendeley.com/datasets/2h76672znt/1), replace the following three files in the directories `~/HiGANplus/HiGAN+/data/` and `~/HiGANplus/HiGAN+/data/iam` and refer to the section [Training](#training):
+To train on the [AHAWP dataset](https://data.mendeley.com/datasets/2h76672znt/1), replace the following three files in the directories `~/HiGANplus/HiGAN+/data/` and `~/HiGANplus/HiGAN+/data/iam/` and refer to the section [Training](#training):
 
 - [trnvalset_words64_OrgSz.hdf5](https://github.com/MuellerDominik/HiGANplus/releases/download/ahawp-dataset/trnvalset_words64_OrgSz.hdf5)
 - [testset_words64_OrgSz.hdf5](https://github.com/MuellerDominik/HiGANplus/releases/download/ahawp-dataset/testset_words64_OrgSz.hdf5)
@@ -64,19 +64,13 @@ To generate these files from scratch, see [here](#dataset-generation).
 
 #### Dataset Generation
 
-First, download the [AHAWP dataset](https://data.mendeley.com/datasets/2h76672znt/1) and locate the directory `isolated_words_per_user`. Divide this directory into `arabic_isolated_words_per_user_train` and `arabic_isolated_words_per_user_test` and move them to the directory `~/Arabic/data`. In this case, 18 users will be in the test split and the remaining users will be in the training split.
+First, download the [AHAWP dataset](https://data.mendeley.com/datasets/2h76672znt/1) and locate the directory `isolated_words_per_user`. Divide this directory into `arabic_isolated_words_per_user_train` and `arabic_isolated_words_per_user_test` and move them to the directory `~/HiGANplus/Arabic/data`. In this case, 18 users will be in the test split and the remaining users will be in the training split.
 
-<!-- Move this directory to `~/Arabic/data` and divide it into two: `arabic_isolated_words_per_user_train` and `arabic_isolated_words_per_user_test`. -->
-
-<!-- Next, run the python file `~/Arabic/arabic_image_pre_processing.py`. This file will gather the labels, writer ID, crop the image according to the IAM dataset, and invert it. Then, execute `~/Arabic/arabic_hdf5_dataset_generation.py` to generate the necessary .hdf5 files for the model. -->
-
-To generate the `.hdf5` and `.txt` files necessary for the training, run the python file `~/Arabic/arabic_image_pre_processing.py`. This file will gather the labels, writer ID, crop the image according to the IAM dataset, and invert it.
+To generate the `.hdf5` and `.txt` files necessary for the training, run the python file `~/HiGANplus/Arabic/arabic_image_pre_processing.py`. This file will gather the labels, writer ID, crop the image according to the IAM dataset, and invert it.
 
 To run the code without making any adjustments, rename the generated test and train splits to `testset_words64_OrgSz.hdf5` and `trnvalset_words64_OrgSz.hdf5` respectively, and move them to the directory `~/HiGANplus/HiGAN+/data/iam/`. Additionally, a file called `arabic_test_words.txt` will be created when creating the test split (`is_test = True`). This file contains the words that the model will be tested on. Rename it to `english_words.txt` and move it to the directory `~/HiGANplus/HiGAN+/data/`.
 
-The file `~/Arabic/reading_hdf5_files.py` was used to reverse-engineer the dataset structure and for debugging purposes only. Once all the above steps are completed, the model can be trained (refer to the section [Training](#training))
-
-<!-- Lastly, the 'README_of_HiGAN+_Source_Code.md' file is the markdown README file for the source code. -->
+The file `~/HiGANplus/Arabic/reading_hdf5_files.py` was used to reverse-engineer the dataset structure and for debugging purposes only. Once all the above steps are completed, the model can be trained (refer to the section [Training](#training))
 
 <!-- Conditional GAN Modification -->
 
