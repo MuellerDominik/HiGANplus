@@ -32,3 +32,11 @@ Once all the above steps are completed, the model can be executed.
 The 'run.sh' file can be used to run it on the Euler cluster. 
 
 Lastly, the 'README_of_HiGAN+_Source_Code.md' file is the markdown README file for the source code. 
+
+
+## Sub-experiment 'Conditional GAN Modification'
+
+To reconstruct our cGAN modification experiment, you need to run the original source code of the HiGAN+ paper and 
+switch the original 'model.py' with the 'model.py' in the 'CGAN_Modification' folder. Furthermore, you need to change 
+the 'input_nc' variable in the 'gan_iam.yml' file from the default 1 to 81.
+
