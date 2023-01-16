@@ -1,0 +1,16 @@
+torch
+torchvision
+numpy
+scikit-build
+opencv-python==4.5.5.64
+pillow
+munch
+matplotlib
+distance
+tqdm
+scikit-learn
+scikit-image
+scipy
+h5py
+pyyaml
+tensorboard
