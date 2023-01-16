@@ -2,7 +2,7 @@ torch
 torchvision
 numpy
 scikit-build
-opencv-python==4.5.5.64
+opencv-python
 pillow
 munch
 matplotlib

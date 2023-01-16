@@ -1,6 +1,6 @@
 #!/bin/sh
 
-NETZH_USR="taskins"
+NETZH_USR="netzh_usr"
 HOME_PATH="/cluster/home/$NETZH_USR"
 REPO_PATH="$HOME_PATH/HiGANplus/HiGAN+"
 
