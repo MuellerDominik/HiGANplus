@@ -66,7 +66,7 @@ To generate these files from scratch, see [here](#dataset-generation).
 
 First, download the [AHAWP dataset](https://data.mendeley.com/datasets/2h76672znt/1) and locate the directory `isolated_words_per_user`. Divide this directory into `arabic_isolated_words_per_user_train` and `arabic_isolated_words_per_user_test` and move them to the directory `~/HiGANplus/Arabic/data`. In this case, 18 users will be in the test split and the remaining users will be in the training split.
 
-To generate the `.hdf5` and `.txt` files necessary for the training, run the python file `~/HiGANplus/Arabic/arabic_image_pre_processing.py`. This file will gather the labels, writer ID, crop the image according to the IAM dataset, and invert it.
+To generate the `.hdf5` and `.txt` files necessary for the training, run the Python file `~/HiGANplus/Arabic/arabic_image_pre_processing.py`. This file will gather the labels, writer ID, crop the image according to the IAM dataset, and invert it. The `.hdf5` files are created with the function `gen_h5file` from the Python file `~/HiGANplus/Arabic/arabic_hdf5_dataset_generation.py` which was created by the [HiGAN authors](https://github.com/ganji15/HiGAN/issues/3).
 
 To run the code without making any adjustments, rename the generated test and train splits to `testset_words64_OrgSz.hdf5` and `trnvalset_words64_OrgSz.hdf5` respectively, and move them to the directory `~/HiGANplus/HiGAN+/data/iam/`. Additionally, a file called `arabic_test_words.txt` will be created when creating the test split (`is_test = True`). This file contains the words that the model will be tested on. Rename it to `english_words.txt` and move it to the directory `~/HiGANplus/HiGAN+/data/`.
 
@@ -76,4 +76,9 @@ The file `~/HiGANplus/Arabic/reading_hdf5_files.py` was used to reverse-engineer
 
 ### Conditional GAN Modification
 
-To reconstruct our cGAN modification experiment, you need to run the original source code of the HiGAN+ paper and switch the original 'model.py' with the 'model.py' in the 'CGAN_Modification' folder. Furthermore, you need to change the 'input_nc' variable in the 'gan_iam.yml' file from the default 1 to 81.
+To recreate the results of the cGAN modification, clone the original [HiGANplus](https://github.com/ganji15/HiGANplus) repository and carry out the following steps:
+
+- Replace the file `HiGANplus/HiGAN+/networks/model.py` with the file `~/HiGANplus/cGAN/model.py`
+- Change the value of the `DiscModel.input_nc` config parameter in the file `~/HiGANplus/HiGAN+/configs/gan_iam.yml` on line `119` from `1` to `81`
+
+Follow the steps mentioned in their [README file](https://github.com/ganji15/HiGANplus/blob/main/README.md) to train the model.
