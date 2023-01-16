@@ -1,3 +1,6 @@
+
+# This function was taken from here: https://github.com/ganji15/HiGAN/issues/3
+
 import itertools
 import h5py
 import numpy as np
