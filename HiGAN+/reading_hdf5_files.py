@@ -2,17 +2,17 @@ import h5py
 import cv2
 
 # Open the HDF5 file
-with h5py.File('data/iam/testset_words64_OrgSz.hdf5', 'r') as f:
+with h5py.File('arabic_hdf5_file.hdf5', 'r') as f:
     # Access the data in the file
-    img_lens = f['img_lens'][()]
-    img_seek_idxs = f['img_seek_idxs'][()]
-    imgs = f['imgs'][()]
-    lb_lens = f['lb_lens'][()]
-    lb_seek_idxs = f['lb_seek_idxs'][()]
-    lbs = f['lbs'][()]
-    wids = f['wids'][()]
+    img_lens = f['img_lens']
+    img_seek_idxs = f['img_seek_idxs']
+    imgs = f['imgs']
+    lb_lens = f['lb_lens']
+    lb_seek_idxs = f['lb_seek_idxs']
+    lbs = f['lbs']
+    wids = f['wids']
 
-    # cv2.imwrite(imgs[])
+    cv2.imwrite('test2.jpeg', imgs[:, img_seek_idxs[12]:img_seek_idxs[13]])
 
     i = 0
     print("img_lens:", img_lens[i])
@@ -24,13 +24,15 @@ with h5py.File('data/iam/testset_words64_OrgSz.hdf5', 'r') as f:
     print("wids:", wids[i])
 
 
+# Note
+#  Results of the original IAM hdf5 file:
 
-# Note:
 # File
 # name: data / iam / trnvalset_words64_OrgSz.hdf5
+#
 # File
 # mode: r
-
+#
 # Dataset
 # name: img_lens
 # Datatype: int16
